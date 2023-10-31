@@ -1,0 +1,32 @@
+README for Scientific Notation to Full Number Formatting Script
+
+Description
+
+This script contains a function that formats numbers in scientific notation to their full number representation. It does so by removing the decimal point and any trailing zeros from the number if they exist.
+
+How to Use
+
+1. Ensure you have a DataFrame (or Pandas Series) containing the numbers you want to format in scientific notation. In this README, we'll assume you have a DataFrame named `df`.
+
+2. Import the required packages:
+
+   ```python
+   import pandas as pd
+
+Define the function in your script:
+
+def format_scientific_to_full(value):
+    parts = value.split('.')
+    if len parts == 2:
+        # If the value has a decimal point, remove trailing zeros
+        integer_part, decimal_part = parts
+        return integer_part.rstrip('0')
+    else:
+        # If there's no decimal point, return the original value
+        return value
+
+Apply the function to the desired column (in this example, we're using a column named 'Number'):
+
+df['Number'] = df['Number'].apply(format_scientific_to_full)
+
+
